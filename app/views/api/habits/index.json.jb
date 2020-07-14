@@ -1,0 +1,3 @@
+@habits.map do |habit|
+  render partial: "habit.json.jb", locals: { habit: habit }
+end

@@ -1,0 +1,12 @@
+{
+  name: habit.name,
+  id: habit.id,
+  notes: habit.notes,
+  frequency: habit.frequency,
+  factor: habit.factor,
+  duration: habit.duration,
+  total: habit.total,
+  user_id: habit.user_id,
+  category_id: habit.category_id,
+  completed_by: habit.complete_by
+}

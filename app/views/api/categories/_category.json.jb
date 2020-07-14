@@ -1,0 +1,9 @@
+{
+  name: category.name,
+  id: category.id,
+  statement: category.statement,
+  image_url: category.image_url,
+  user_id: category.user_id,
+  habits: category.habits
+
+}
