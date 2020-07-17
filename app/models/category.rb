@@ -6,9 +6,16 @@ class Category < ApplicationRecord
   has_many :habits
   belongs_to :user
 
-  # def habit_names
-  #   category.habits.map { |habit| habits.["name"] } 
-  # end
+  def habit_names
+    habits.map { |habit| habit["name"] }
+  end
+
+  def category_progress
+    if habits.length > 0
+      all_habit = habits.map { |habit| habit.habit_progress }
+      (all_habit.sum / habits.length).round(2)
+    end
+  end
 
 
 
