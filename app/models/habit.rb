@@ -1,6 +1,9 @@
 class Habit < ApplicationRecord
 
   validates :name, presence: true
+  validates :frequency, presence: true, numericality: { greater_than: 0 }
+  validates :factor, presence: true, numericality: { greater_than: 0}
+  validates :category_id, presence: true, numericality: true
   
   belongs_to :user
   belongs_to :category
@@ -23,8 +26,8 @@ class Habit < ApplicationRecord
     ((completes.length.to_d / total.to_i).to_f).round(2)
   end
 
-  def remove_complete
-    complete = Complete.where({ habit_id: current_user.id }).last 
+  def remove_complete(habit_id)
+    complete = Complete.where(habit_id: habit_id).last
     complete.destroy
   end
 
