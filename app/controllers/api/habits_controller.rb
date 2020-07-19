@@ -17,11 +17,15 @@ class Api::HabitsController < ApplicationController
       notes: params[:notes],
       frequency: params[:frequency],
       factor: params[:factor],
-      duration: params[:duration],
       user_id: current_user.id,
       category_id: params[:category_id],
+      duration: params[:duration],
       complete_by: params[:complete_by]
-    )
+    ) 
+    # if @habit.complete_by
+    #   @habit.complete_by = Date.parse(params[:complete_by])
+
+    # end
     if @habit.save
       render "show.json.jb"
     else

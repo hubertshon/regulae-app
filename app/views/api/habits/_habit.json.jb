@@ -10,6 +10,6 @@
   user_id: habit.user_id,
   category_id: habit.category_id,
   category_name: habit.category.name,
-  completed_by: habit.complete_by,
+  complete_by: habit.complete_by,
   completes: habit.completes
 }

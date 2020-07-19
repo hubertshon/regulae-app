@@ -11,8 +11,21 @@ class Habit < ApplicationRecord
 
   
   def total
-    return factor * frequency * duration
+    if duration
+      return factor * frequency * duration
+    elsif complete_by
+      if factor == 28
+        pre_total = (complete_by - Date.today).to_i
+      elsif factor == 4
+        pre_total = complete_by.downto(Date.today).count.fdiv(7).floor
+      elsif factor == 1 
+        pre_total = complete_by.downto(Date.today).count.fdiv(28).round
+      end
+      return frequency * pre_total
+    end
+    habit.save
   end
+
 
   def add_complete
     complete = Complete.new(
@@ -30,6 +43,7 @@ class Habit < ApplicationRecord
     complete = Complete.where(habit_id: habit_id).last
     complete.destroy
   end
+
 
 
 end
