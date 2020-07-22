@@ -5,5 +5,11 @@
   image_url: category.image_url,
   category_progress: category.category_progress,
   user_id: category.user_id,
-  habits: category.habit_names
+  habits: category.habits
+  
+  # {
+  #   habit_names: category.habit_names,
+  #   habit_ids: category.habit_ids
+  # } 
+
 }

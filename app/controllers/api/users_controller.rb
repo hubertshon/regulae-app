@@ -27,11 +27,15 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.id == current_user.id
       @user.first_name = params[:first_name] || @user.first_name
       @user.last_name = params[:last_name] || @user.last_name
       @user.email = params[:email] || @user.email
+      if params[:password]
+        @user.password = params[:password]
+        @user.password_confirmation = params[:password_confirmation]
+      end
       if @user.save 
         render 'show.json.jb' 
       else

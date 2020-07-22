@@ -10,6 +10,11 @@ class Category < ApplicationRecord
     habits.map { |habit| habit["name"] }
   end
 
+  def habit_ids
+    habits.map { |habit| habit["id"] }
+  end
+
+
   def category_progress
     if habits.length > 0
       all_habit = habits.map { |habit| habit.habit_progress }
