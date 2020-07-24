@@ -9,7 +9,5 @@
   habit_progress: habit.habit_progress,
   user_id: habit.user_id,
   category_id: habit.category_id,
-  category_name: habit.category.name,
-  complete_by: habit.complete_by,
-  completes: habit.completes
+  complete_by: habit.complete_by
 }

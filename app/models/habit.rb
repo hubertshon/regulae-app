@@ -43,8 +43,8 @@ class Habit < ApplicationRecord
     ((completes.length.to_d / total.to_i).to_f).round(2)
   end
 
-  def remove_complete(habit_id)
-    complete = Complete.where(habit_id: habit_id).last
+  def remove_complete
+    complete = Complete.where(habit_id: id).last
     complete.destroy
   end
 
