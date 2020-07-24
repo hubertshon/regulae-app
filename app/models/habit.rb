@@ -13,15 +13,15 @@ class Habit < ApplicationRecord
   def total
     if complete_by
       if factor == 28
-        pre_total = (complete_by - Date.today).to_i
+        pre_total = (complete_by - created_at.to_date + 1).to_i
       elsif factor == 4
-        pre_total = complete_by.downto(Date.today).count.fdiv(7).floor
+        pre_total = complete_by.downto(created_at.to_date).count.fdiv(7).round
       elsif factor == 1 
-        pre_total = complete_by.downto(Date.today).count.fdiv(28).round
+        pre_total = complete_by.downto(created_at.to_date).count.fdiv(28).round
       end
-      total = frequency * pre_total
+      pre_total
     elsif duration
-      total = factor * frequency * duration
+      factor * frequency * duration
     end
   end
 
