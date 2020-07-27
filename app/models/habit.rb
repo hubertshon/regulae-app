@@ -50,4 +50,5 @@ class Habit < ApplicationRecord
 
 
 
+
 end

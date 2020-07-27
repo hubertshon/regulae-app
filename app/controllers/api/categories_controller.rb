@@ -32,7 +32,8 @@ class Api::CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id]) 
-    if @category.user_id == current_user.id
+
+    # if @category.user_id == current_user.id
       @category.name = params[:name] || @category.name
       @category.statement = params[:statement] || @category.statement
       @category.image_url = params[:image_url] || @category.image_url
@@ -43,9 +44,9 @@ class Api::CategoriesController < ApplicationController
         render json: { errors: @category.errors.full_messages },
         status: :unprocessable_entity
       end
-    else
-      render json: { message: "Not Authorized" }, status: :unauthorized
-    end
+    # else
+    #   render json: { message: "Not Authorized" }, status: :unauthorized
+    # end
   end
 
   def destroy
