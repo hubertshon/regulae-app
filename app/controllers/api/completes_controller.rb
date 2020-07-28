@@ -9,8 +9,15 @@ class Api::CompletesController < ApplicationController
   end
 
   def delete
-    complete = Complete.where(habit_id: id).last
-    complete.destroy
+    complete = Complete.where(habit_id: params[:habit_id]).last
+    if complete.destroy
+      render json: { message: "Habit Deleted" }
+    end
   end
+
+  # def show
+  #   complete = Complete.where(habit_id: params[:habit_id]).last
+  #   render partial: 'complete.json.jb', locals: {complete: complete}
+  # end
 
 end

@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     delete "/users/:id" => "users#delete"
 
     post "/completes" => "completes#create"
-    delete "/completes" => "completes#delete"
+    delete "/completes/:habit_id" => "completes#delete"
+    get "/completes" => "completes#show"
 
     get "/sessions" => "sessions#show"
     post "/sessions" => "sessions#create"
