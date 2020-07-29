@@ -9,7 +9,7 @@ class Habit < ApplicationRecord
   
   belongs_to :user
   belongs_to :category
-  has_many :completes
+  has_many :completes, dependent: :destroy
 
   
   def total
