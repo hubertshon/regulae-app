@@ -3,6 +3,8 @@ class Habit < ApplicationRecord
   validates :name, presence: true
   validates :frequency, presence: true, numericality: { greater_than: 0 }
   validates :factor, presence: true, numericality: { greater_than: 0}
+  validates :duration, presence: true, unless: :complete_by
+  validates :complete_by, presence: true, unless: :duration
   validates :category_id, presence: true, numericality: true
   
   belongs_to :user

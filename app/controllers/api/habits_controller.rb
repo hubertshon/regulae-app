@@ -40,10 +40,15 @@ class Api::HabitsController < ApplicationController
       @habit.notes = params[:notes] || @habit.notes
       @habit.frequency = params[:frequency] || @habit.frequency
       @habit.factor = params[:factor] || @habit.factor
-      @habit.duration = params[:duration]  || @habit.duration
+      if params[:duration] && params[:complete_by] == 0
+        @habit.complete_by = nil
+        @habit.duration = params[:duration]
+      elsif params[:complete_by] && params[:duration] == 0
+        @habit.duration = nil
+        @habit.complete_by = params[:complete_by]
+      end
       @habit.user_id = current_user.id
       @habit.category_id = params[:category_id] || @habit.category_id
-      @habit.complete_by = params[:complete_by] || @habit.complete_by
       if @habit.save
         render "show.json.jb"
       else
