@@ -6,12 +6,13 @@ class Api::CompletesController < ApplicationController
       habit_id: params[:habit_id]
     )
     complete.save
+    render json: { habit_progress: complete.habit.habit_progress}
   end
 
   def delete
     complete = Complete.where(habit_id: params[:habit_id]).last
     if complete.destroy
-      render json: { message: "Habit Deleted" }
+      render json: { habit_progress: complete.habit.habit_progress }
     end
   end
 
