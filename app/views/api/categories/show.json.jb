@@ -1,6 +1,13 @@
 category_hash = render partial: "category.json.jb", locals: { category: @category }
 category_hash[:habits] = @category.habits.map do |habit|
-  render partial: "/api/habits/habit.json.jb", locals: { habit: habit }
+  habit_hash = render partial: "/api/habits/habit.json.jb", locals: { habit: habit }
+
+  habit_hash[:completes] = habit.completes.map do |complete|
+    render partial: "/api/completes/complete.json.jb", locals: { complete: complete }
+  end
+  habit_hash
 end
 
+
 category_hash
+

@@ -1,0 +1,4 @@
+{
+  icon_url: JSON.parse(icon)["icon"]["icon_url"]
+  # icon_url: icon.icon_url
+}

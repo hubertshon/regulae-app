@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # EXAMPLE HTML ROUTE
   # get "/photos" => "photos#index"
 
+  get "/icons" => "icons#show"
 
   namespace :api do
     get "/habits/:id" => "habits#show"
