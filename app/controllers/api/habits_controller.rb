@@ -2,6 +2,11 @@ class Api::HabitsController < ApplicationController
 
   before_action :authenticate_user
 
+  def index
+    @habits = Habit.where(user_id: current_user.id) 
+    render "index.json.jb"
+  end
+
   def show
     @habit = Habit.find(params[:id])
     if @habit.user_id == current_user.id

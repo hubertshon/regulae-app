@@ -1,5 +1,6 @@
 class Habit < ApplicationRecord
 
+
   validates :name, presence: true
   validates :frequency, presence: true, numericality: { greater_than: 0 }
   validates :factor, presence: true, numericality: { greater_than: 0}
@@ -49,6 +50,21 @@ class Habit < ApplicationRecord
     complete = Complete.where(habit_id: id).last
     complete.destroy
   end
+
+  # def upcoming_habits
+  #   upcoming = []
+  #   habits = Habit.where(user_id: id)
+  #   habits.map do |habit|
+  #     if habit.factor == 28
+  #       upcoming << habit.name
+  #     elsif habit.factor == 4
+  #       upcoming << habit.name
+  #     elsif habit.factor == 1 && (habit.complete.last - Date.today) > 28
+  #       upcoming << habit.name
+  #     end
+  #   end
+  #   return upcoming
+  # end
 
 
 

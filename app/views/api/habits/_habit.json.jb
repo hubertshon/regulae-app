@@ -10,4 +10,5 @@
   user_id: habit.user_id,
   category_id: habit.category_id,
   complete_by: habit.complete_by
+  # upcoming_habits: habit.upcoming_habits
 }
