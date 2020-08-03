@@ -17,10 +17,12 @@ class Api::CategoriesController < ApplicationController
   end
 
   def create
+    response = Cloudinary::Uploader.upload(params[:image_file])
+    cloudinary_url = response["secure_url"]
     @category = Category.new(
       name: params[:name],
       statement: params[:statement],
-      image_url: params[:image_url],
+      image_url: cloudinary_url,
       user_id: current_user.id
     )
     if @category.save
