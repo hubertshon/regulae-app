@@ -33,12 +33,14 @@ class Api::CategoriesController < ApplicationController
   end
 
   def update
+    response = Cloudinary::Uploader.upload(params[:image_file])
+    cloudinary_url = response["secure_url"]
     @category = Category.find(params[:id]) 
 
     # if @category.user_id == current_user.id
       @category.name = params[:name] || @category.name
       @category.statement = params[:statement] || @category.statement
-      @category.image_url = params[:image_url] || @category.image_url
+      @category.image_url = cloudinary_url || @category.image_url
       @category.user_id = params[:user_id] || @category.user_id
       if @category.save
         render "show.json.jb"

@@ -1,0 +1,3 @@
+@completes.map do |complete|
+  render partial: "complete.json.jb", locals: { complete: complete}
+end

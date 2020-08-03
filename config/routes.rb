@@ -23,9 +23,10 @@ Rails.application.routes.draw do
     patch "/users/:id" => "users#update"
     delete "/users/:id" => "users#delete"
 
+    get "/completes/:habit_id" => "completes#show"
     post "/completes" => "completes#create"
     delete "/completes/:habit_id" => "completes#delete"
-    get "/completes" => "completes#show"
+    
 
     get "/sessions" => "sessions#show"
     post "/sessions" => "sessions#create"

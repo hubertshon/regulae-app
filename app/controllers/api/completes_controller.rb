@@ -16,9 +16,9 @@ class Api::CompletesController < ApplicationController
     end
   end
 
-  # def show
-  #   complete = Complete.where(habit_id: params[:habit_id]).last
-  #   render partial: 'complete.json.jb', locals: {complete: complete}
-  # end
+  def show
+    @completes = Complete.where(habit_id: params[:habit_id])
+    render 'index.json.jb'
+  end
 
 end
