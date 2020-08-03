@@ -1,7 +1,6 @@
-# {
-#   id: complete.id,
-#   date: complete.date,
-#   habit_id: complete.habit_id
-# }
+{
+  id: complete.id,
+  date: complete.date,
+  habit_id: complete.habit_id
+}
 
-puts complete

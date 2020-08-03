@@ -6,13 +6,13 @@ class Api::CompletesController < ApplicationController
       habit_id: params[:habit_id]
     )
     complete.save
-    render json: { habit_progress: complete.habit.habit_progress}
+    render json: { habit_progress: complete.habit.habit_progress, completes: complete.habit.completes }
   end
 
   def delete
     complete = Complete.where(habit_id: params[:habit_id]).last
     if complete.destroy
-      render json: { habit_progress: complete.habit.habit_progress }
+      render json: { habit_progress: complete.habit.habit_progress, completes: complete.habit.completes }
     end
   end
 
