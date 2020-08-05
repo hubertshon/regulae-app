@@ -23,7 +23,8 @@ class Api::CategoriesController < ApplicationController
       name: params[:name],
       statement: params[:statement],
       image_url: cloudinary_url,
-      user_id: current_user.id
+      user_id: current_user.id,
+      color: params[:color]
     )
     if @category.save
       render "show.json.jb"
@@ -33,8 +34,10 @@ class Api::CategoriesController < ApplicationController
   end
 
   def update
-    response = Cloudinary::Uploader.upload(params[:image_file])
-    cloudinary_url = response["secure_url"]
+    if params[:image_file]
+      response = Cloudinary::Uploader.upload(params[:image_file])
+      cloudinary_url = response["secure_url"]
+    end
     @category = Category.find(params[:id]) 
 
     # if @category.user_id == current_user.id
@@ -42,6 +45,7 @@ class Api::CategoriesController < ApplicationController
       @category.statement = params[:statement] || @category.statement
       @category.image_url = cloudinary_url || @category.image_url
       @category.user_id = params[:user_id] || @category.user_id
+      @category.color = params[:color] || @category.color
       if @category.save
         render "show.json.jb"
       else

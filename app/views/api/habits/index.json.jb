@@ -3,6 +3,7 @@
   habit_hash[:completes] = habit.completes.map do |complete|
     render partial: "/api/completes/complete.json.jb", locals: { complete: complete }
   end
+  habit_hash[:color] = habit.category.color
   
   habit_hash
   
