@@ -42,7 +42,7 @@ class Category < ApplicationRecord
 
 
   # ORIGINAL progress for all (Hard Mode)
-  # def category_progress_hard
+  # def hard_progress
   #   if habits.length > 0
   #     all_habit = habits.map { |habit| habit.habit_progress }
   #     progress = (all_habit.sum / habits.length).round(2)
