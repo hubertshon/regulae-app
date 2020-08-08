@@ -22,7 +22,7 @@ class Habit < ApplicationRecord
       elsif factor == 1 
         pre_total = complete_by.downto(created_at.to_date).count.fdiv(28).round
       end
-      pre_total
+      pre_total * frequency 
     elsif duration
       factor * frequency * duration
     end
@@ -64,7 +64,7 @@ class Habit < ApplicationRecord
   #     end
   #   end
   #   return upcoming
-  # end
+  # end  
 
 
 

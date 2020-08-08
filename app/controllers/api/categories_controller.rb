@@ -17,8 +17,10 @@ class Api::CategoriesController < ApplicationController
   end
 
   def create
-    response = Cloudinary::Uploader.upload(params[:image_file])
-    cloudinary_url = response["secure_url"]
+    if params[:image_url]
+      response = Cloudinary::Uploader.upload(params[:image_file])
+      cloudinary_url = response["secure_url"]
+    end
     @category = Category.new(
       name: params[:name],
       statement: params[:statement],
@@ -40,7 +42,6 @@ class Api::CategoriesController < ApplicationController
     end
     @category = Category.find(params[:id]) 
 
-    # if @category.user_id == current_user.id
       @category.name = params[:name] || @category.name
       @category.statement = params[:statement] || @category.statement
       @category.image_url = cloudinary_url || @category.image_url
@@ -52,9 +53,6 @@ class Api::CategoriesController < ApplicationController
         render json: { errors: @category.errors.full_messages },
         status: :unprocessable_entity
       end
-    # else
-    #   render json: { message: "Not Authorized" }, status: :unauthorized
-    # end
   end
 
   def destroy
