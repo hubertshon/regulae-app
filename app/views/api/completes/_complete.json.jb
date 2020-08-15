@@ -1,6 +1,7 @@
 {
   id: complete.id,
   date: complete.date,
+  created_at: complete.created_at.strftime("%A, %d %b %Y %l:%M %p"),
   habit_id: complete.habit_id,
   factor: complete.habit.factor,
   color: complete.habit.category.color
