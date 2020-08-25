@@ -1,5 +1,6 @@
 @habits.map do |habit|
   habit_hash = render partial: "habit.json.jb", locals: { habit: habit }
+  
   habit_hash[:completes] = habit.completes.map do |complete|
     render partial: "/api/completes/complete.json.jb", locals: { complete: complete }
   end

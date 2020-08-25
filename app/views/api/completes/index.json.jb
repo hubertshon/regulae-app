@@ -1,3 +1,7 @@
 @completes.map do |complete|
-  render partial: "complete.json.jb", locals: { complete: complete}
+  completes_hash = render partial: "complete.json.jb", locals: { complete: complete }
+
+  # completes_hash[:category] = complete.habit.category.category_progress
+
+  completes_hash
 end

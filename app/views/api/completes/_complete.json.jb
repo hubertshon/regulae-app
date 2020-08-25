@@ -5,5 +5,6 @@
   habit_id: complete.habit_id,
   factor: complete.habit.factor,
   color: complete.habit.category.color
+
 }
 
