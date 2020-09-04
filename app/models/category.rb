@@ -33,9 +33,9 @@ class Category < ApplicationRecord
     if current_total.sum > 0
       progress = current_completes/(current_total.sum.to_f)
       progress = progress.round(2)
-    end
-    if progress.to_i > 100
-      progress = 100
+      if progress > 1
+        progress = 1
+      end
     end
     return progress
   end
